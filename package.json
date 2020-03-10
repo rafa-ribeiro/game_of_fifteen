@@ -1,0 +1,29 @@
+{
+  "name": "game_of_fifteen",
+  "version": "1.0.0",
+  "description": "Desenvolvimento do jogo Game Of Fifteen para estudo e prática de Javascript.",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafa-ribeiro/game_of_fifteen.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rafa-ribeiro/game_of_fifteen/issues"
+  },
+  "homepage": "https://github.com/rafa-ribeiro/game_of_fifteen#readme",
+  "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "babel-jest": "^25.1.0",
+    "jest": "^25.1.0",
+    "parcel": "^1.12.4"
+  }
+}
