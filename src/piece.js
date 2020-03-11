@@ -8,19 +8,16 @@ export default class Piece {
     }
 
     draw(ctx) {
-        debugger;
-        ctx.rect(this.position.x, this.position.y, this.width, this.height, 100, true);
         ctx.fillStyle = "rgba(0, 0, 0)";
-        ctx.fill();
+        ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
 
         ctx.font = "40px Arial";
-        ctx.fillStyle = "red";
+        ctx.fillStyle = "white";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
 
         let x = this.position.x + (this.width / 2);
         let y = this.position.y + (this.height / 2);
-
         ctx.fillText(this.value, x, y);
     }
 
