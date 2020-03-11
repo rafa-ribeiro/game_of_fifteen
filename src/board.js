@@ -10,8 +10,7 @@ export default class Board {
 
         templateBoard.forEach((row, rowIndex) => {
             row.forEach((pieceValue, pieceIndex) => {
-                let position = {x: 20 + (pieceIndex * pieceWidth + (10 * pieceIndex)), y: 20 + (rowIndex * pieceHeight + (10 * rowIndex))};
-                console.log(position);
+                let position = {x: 10 + (pieceIndex * pieceWidth + (10 * pieceIndex)), y: 10 + (rowIndex * pieceHeight + (10 * rowIndex))};
                 this.pieces.push(new Piece(pieceValue, position, pieceWidth, pieceHeight));
             });
         });

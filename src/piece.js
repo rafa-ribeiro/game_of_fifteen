@@ -2,9 +2,9 @@ export default class Piece {
 
     constructor(value, position, width, height) {
         this.value = value;
+        this.position = position;
         this.width = width;
         this.height = height;
-        this.position = position;
     }
 
     draw(ctx) {
