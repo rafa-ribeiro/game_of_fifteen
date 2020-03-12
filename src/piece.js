@@ -25,8 +25,6 @@ export default class Piece {
             let x = this.position.x + (this.width / 2);
             let y = this.position.y + (this.height / 2);
             ctx.fillText(this.value, x, y);
-        }
-        
+        }   
     }
-
 }
