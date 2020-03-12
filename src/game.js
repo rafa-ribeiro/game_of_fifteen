@@ -10,10 +10,6 @@ export default class Game {
     }
 
     draw(ctx) {
-        this.board.piecesList.forEach(piece => {
-            piece.draw(ctx);
-        });
-
+        this.board.draw(ctx);
     }
-
 }

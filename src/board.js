@@ -3,6 +3,7 @@ import Piece from "/src/piece";
 export default class Board {
 
     constructor(game) {
+        this.boardSpaces = []
         this.piecesList = [];
 
         let pieceWidth = 80;
@@ -11,6 +12,14 @@ export default class Board {
         this.boardMatrix = [];
 
         this.emptyPiece = null;
+
+        emptyBoard.forEach((row, rowIndex) => {
+
+            row.forEach((pieceValue, columnIndex) => {
+                let position = {x: 10 + (columnIndex * pieceWidth + (10 * columnIndex)), y: 10 + (rowIndex * pieceHeight + (10 * rowIndex))};
+                this.boardSpaces.push(new Piece(pieceValue, position, pieceWidth, pieceHeight));
+            });
+        });
 
         templateBoard.forEach((row, rowIndex) => {
 
@@ -26,7 +35,24 @@ export default class Board {
             this.boardMatrix.push(Array.from(row));
         });
     }
+
+    draw(ctx) {
+        this.boardSpaces.forEach(space => {
+            space.draw(ctx);
+        });
+
+        this.piecesList.forEach(piece => {
+            piece.draw(ctx);
+        });
+    }
 } 
+
+const emptyBoard = [
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0]
+];
 
 const templateBoard = [
     [1, 2, 8, 5],

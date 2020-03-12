@@ -16,7 +16,6 @@ export default class Piece {
         }
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
 
-
         if (!isEmpty) {
             ctx.font = "40px Arial";
             ctx.fillStyle = "white";
