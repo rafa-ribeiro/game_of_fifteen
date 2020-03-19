@@ -5,12 +5,12 @@ export default class InputHandler {
             switch (event.keyCode) {
                 case 37:
                     // left arrow
-                    console.log("esquerda");    
+                    game.board.moveLeft(); 
                     break;
 
                 case 39:
                     // right arrow
-                    console.log("direta");
+                    game.board.moveRight(); 
                     break;
 
                 case 38:
