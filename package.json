@@ -7,6 +7,7 @@
     "start": "parcel index.html",
     "build": "parcel build index.html",
     "prod":  "parcel build index.html --out-dir docs --public-url ./",
+    "deploy": "npm run build && git add . && git commit -a -m 'Latest build' && git push origin master",
     "test": "jest --watch"
   },
   "repository": {

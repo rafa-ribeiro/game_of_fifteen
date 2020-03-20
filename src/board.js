@@ -61,7 +61,7 @@ export default class Board {
             this.isMoving = true;
 
             let newEmptySpaceColumn = this.emptySpace.columnIndex + 1;
-            let pieceToMove = this.boardMatrix[this.emptySpace.rowIndex][newEmptySpaceColumn];
+            let pieceToMove = this._getPieceToMoveBy(this.emptySpace.rowIndex, newEmptySpaceColumn);
 
             if (pieceToMove) {
                 pieceToMove.moveLeft();
@@ -76,7 +76,7 @@ export default class Board {
             this.isMoving = true;
 
             let newEmptySpaceColumn = this.emptySpace.columnIndex - 1;
-            let pieceToMove = this.boardMatrix[this.emptySpace.rowIndex][newEmptySpaceColumn];
+            let pieceToMove = this._getPieceToMoveBy(this.emptySpace.rowIndex, newEmptySpaceColumn);
 
             if (pieceToMove) {
                 pieceToMove.moveRight();
@@ -91,7 +91,7 @@ export default class Board {
             this.isMoving = true;
 
             let rowIdxPieceToMove = this.emptySpace.rowIndex + 1;
-            let pieceToMove = this.boardMatrix[rowIdxPieceToMove][this.emptySpace.columnIndex];
+            let pieceToMove = this._getPieceToMoveBy(rowIdxPieceToMove, this.emptySpace.columnIndex);
 
             if (pieceToMove) {
                 pieceToMove.moveUp();
@@ -106,7 +106,7 @@ export default class Board {
             this.isMoving = true;
 
             let rowIdxPieceToMove = this.emptySpace.rowIndex - 1;
-            let pieceToMove = this.boardMatrix[rowIdxPieceToMove][this.emptySpace.columnIndex];
+            let pieceToMove = this._getPieceToMoveBy(rowIdxPieceToMove, this.emptySpace.columnIndex);
 
             if (pieceToMove) {
                 pieceToMove.moveDown();
@@ -114,6 +114,22 @@ export default class Board {
                 this.isMoving = false;
             }
         }
+    }
+
+    _getPieceToMoveBy(rowIndex, columnIndex) {
+        let pieceToMove = null;
+
+        let rowsSize = this.boardMatrix.length;
+        let columnsSize = this.boardMatrix[0].length;
+
+        let rowIdxOk = rowIndex >= 0 && rowIndex < rowsSize;
+        let columnIdxOk = columnIndex >= 0 && columnIndex < columnsSize;
+
+        if (rowIdxOk && columnIdxOk) {
+            pieceToMove = this.boardMatrix[rowIndex][columnIndex];
+        }
+
+        return pieceToMove;
     }
 
     updateBoardMatrix(pieceToUpdate) {
