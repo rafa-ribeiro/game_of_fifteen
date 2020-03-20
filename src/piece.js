@@ -50,37 +50,72 @@ export default class Piece {
     }
 
     moveLeft() {
-        this.isMovingX = true;
+        this._moveHorizontally();
         this.speed = -this.maxSpeed;
     }
 
     moveRight() {
-        this.isMovingX = true;
+        this._moveHorizontally();
         this.speed = this.maxSpeed;
     }
 
+    _moveHorizontally() {
+        this.isMovingX = true;
+        this.isMovingY = false; 
+    }
+
+    moveDown() {
+        this._moveVertically();
+        this.speed = this.maxSpeed;
+    }
+
+    moveUp() {
+        this._moveVertically();
+        this.speed = -this.maxSpeed;
+    }
+
+    _moveVertically() {
+        this.isMovingX = false;
+        this.isMovingY = true; 
+    }
+
+    _stopMoving() {
+        this.isMovingX = false;
+        this.isMovingY = false;
+        this.speed = 0;
+    }
+
     update(deltaTime) {
+
+        let hasArrived = false;
 
         if (this.isMovingX) {
             let emptySpace = this.game.board.emptySpace;
 
             this.position.x = this.position.x + this.speed;
 
-            let hasArrived = false;
             if (this.speed > 0) {
                 hasArrived = this.position.x >= emptySpace.position.x;
             } else if (this.speed < 0) {
                 hasArrived = this.position.x <= emptySpace.position.x;
             }
 
-            if (hasArrived) {
-                this.isMovingX = false;
-                this.speed = 0;
-                this.game.board.updateBoardMatrix(this);
-                console.log(this.game.board.boardMatrix);
+        } else if (this.isMovingY) {
+            let emptySpace = this.game.board.emptySpace;
+
+            this.position.y = this.position.y + this.speed;
+
+            if (this.speed > 0) {
+                hasArrived = this.position.y >= emptySpace.position.y;
+            } else if (this.speed < 0) {
+                hasArrived = this.position.y <= emptySpace.position.y;
             }
         }
-        
-    }
 
+        if (hasArrived) {
+            this._stopMoving();
+            this.game.board.updateBoardMatrix(this);
+            console.log(this.game.board.boardMatrix);
+        }
+    }
 }

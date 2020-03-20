@@ -59,6 +59,7 @@ export default class Board {
     moveLeft() {
         if (!this.isMoving) {
             this.isMoving = true;
+
             let newEmptySpaceColumn = this.emptySpace.columnIndex + 1;
             let pieceToMove = this.boardMatrix[this.emptySpace.rowIndex][newEmptySpaceColumn];
 
@@ -68,17 +69,47 @@ export default class Board {
                 this.isMoving = false;
             }
         }
-
     }
 
     moveRight() {
         if (!this.isMoving) {
             this.isMoving = true;
+
             let newEmptySpaceColumn = this.emptySpace.columnIndex - 1;
             let pieceToMove = this.boardMatrix[this.emptySpace.rowIndex][newEmptySpaceColumn];
 
             if (pieceToMove) {
                 pieceToMove.moveRight();
+            } else {
+                this.isMoving = false;
+            }
+        }
+    }
+
+    moveUp() {
+        if (!this.isMoving) {
+            this.isMoving = true;
+
+            let rowIdxPieceToMove = this.emptySpace.rowIndex + 1;
+            let pieceToMove = this.boardMatrix[rowIdxPieceToMove][this.emptySpace.columnIndex];
+
+            if (pieceToMove) {
+                pieceToMove.moveUp();
+            } else {
+                this.isMoving = false;
+            }
+        }
+    }
+
+    moveDown() {
+        if (!this.isMoving) {
+            this.isMoving = true;
+
+            let rowIdxPieceToMove = this.emptySpace.rowIndex - 1;
+            let pieceToMove = this.boardMatrix[rowIdxPieceToMove][this.emptySpace.columnIndex];
+
+            if (pieceToMove) {
+                pieceToMove.moveDown();
             } else {
                 this.isMoving = false;
             }

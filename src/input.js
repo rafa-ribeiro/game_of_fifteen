@@ -15,13 +15,13 @@ export default class InputHandler {
 
                 case 38:
                     // up arrow
-                    console.log("cima");
+                    game.board.moveUp();
                     break;
 
                 case 40:
                     // down arrow
-                    console.log("baixo");
-                   break;
+                    game.board.moveDown();
+                    break;
 
                 default:
                     console.log(event.keyCode);
