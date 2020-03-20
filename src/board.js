@@ -16,6 +16,8 @@ export default class Board {
 
         this.emptySpace = null;
 
+        this.isMoving = false;
+
         emptyBoard.forEach((row, rowIndex) => {
             row.forEach((pieceValue, columnIndex) => {
                 this.boardSpaces.push(new Piece(game, pieceValue, pieceWidth, pieceHeight, rowIndex, columnIndex));
@@ -55,20 +57,31 @@ export default class Board {
     }
 
     moveLeft() {
-        let newEmptySpaceColumn = this.emptySpace.columnIndex + 1;
-        let pieceToMove = this.boardMatrix[this.emptySpace.rowIndex][newEmptySpaceColumn];
+        if (!this.isMoving) {
+            this.isMoving = true;
+            let newEmptySpaceColumn = this.emptySpace.columnIndex + 1;
+            let pieceToMove = this.boardMatrix[this.emptySpace.rowIndex][newEmptySpaceColumn];
 
-        if (pieceToMove) {
-            pieceToMove.moveLeft();
+            if (pieceToMove) {
+                pieceToMove.moveLeft();
+            } else {
+                this.isMoving = false;
+            }
         }
+
     }
 
     moveRight() {
-        let newEmptySpaceColumn = this.emptySpace.columnIndex - 1;
-        let pieceToMove = this.boardMatrix[this.emptySpace.rowIndex][newEmptySpaceColumn];
+        if (!this.isMoving) {
+            this.isMoving = true;
+            let newEmptySpaceColumn = this.emptySpace.columnIndex - 1;
+            let pieceToMove = this.boardMatrix[this.emptySpace.rowIndex][newEmptySpaceColumn];
 
-        if (pieceToMove) {
-            pieceToMove.moveRight();
+            if (pieceToMove) {
+                pieceToMove.moveRight();
+            } else {
+                this.isMoving = false;
+            }
         }
     }
 
@@ -88,6 +101,8 @@ export default class Board {
         this.emptySpace.columnIndex = pieceColumnIndex;
         this.boardMatrix[pieceRowIndex][pieceColumnIndex] = this.emptySpace;
         this.emptySpace.updateCanvasPosition();
+
+        this.isMoving = false;
     }
 
 } 
