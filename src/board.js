@@ -14,15 +14,11 @@ export default class Board {
         this.rowEmptyPiece = null;
         this.columnEmptyPiece = null;
 
-        this.getEmptySpace = function() {
-            return this.boardMatrix[this.rowEmptyPiece][this.columnEmptyPiece];
-        }
+        this.emptySpace = null;
 
         emptyBoard.forEach((row, rowIndex) => {
-
             row.forEach((pieceValue, columnIndex) => {
-                let position = {x: 10 + (columnIndex * pieceWidth + (10 * columnIndex)), y: 10 + (rowIndex * pieceHeight + (10 * rowIndex))};
-                this.boardSpaces.push(new Piece(game, pieceValue, position, pieceWidth, pieceHeight));
+                this.boardSpaces.push(new Piece(game, pieceValue, pieceWidth, pieceHeight, rowIndex, columnIndex));
             });
         });
 
@@ -31,17 +27,12 @@ export default class Board {
             let piecesRow = []
 
             row.forEach((pieceValue, columnIndex) => {
-                let position = {x: 10 + (columnIndex * pieceWidth + (10 * columnIndex)), y: 10 + (rowIndex * pieceHeight + (10 * rowIndex))};
-                
-                let piece = new Piece(game, pieceValue, position, pieceWidth, pieceHeight);
-                
+                let piece = new Piece(game, pieceValue, pieceWidth, pieceHeight, rowIndex, columnIndex);
                 this.piecesList.push(piece);
-
                 piecesRow.push(piece);
 
                 if (pieceValue === 0) {
-                    this.rowEmptyPiece = rowIndex;
-                    this.columnEmptyPiece = columnIndex;
+                    this.emptySpace = piece;
                 }
             });
 
@@ -64,10 +55,8 @@ export default class Board {
     }
 
     moveLeft() {
-        let emptySpace = this.getEmptySpace();
-
-        let newEmptySpaceColumn = this.columnEmptyPiece + 1;
-        let pieceToMove = this.boardMatrix[this.rowEmptyPiece][newEmptySpaceColumn];
+        let newEmptySpaceColumn = this.emptySpace.columnIndex + 1;
+        let pieceToMove = this.boardMatrix[this.emptySpace.rowIndex][newEmptySpaceColumn];
 
         if (pieceToMove) {
             pieceToMove.moveLeft();
@@ -75,24 +64,32 @@ export default class Board {
     }
 
     moveRight() {
-        let emptySpace = this.getEmptySpace();
+        let newEmptySpaceColumn = this.emptySpace.columnIndex - 1;
+        let pieceToMove = this.boardMatrix[this.emptySpace.rowIndex][newEmptySpaceColumn];
 
-        let newEmptySpaceColumn = this.columnEmptyPiece - 1;
-        let pieceToMove = this.boardMatrix[this.rowEmptyPiece][newEmptySpaceColumn];
         if (pieceToMove) {
             pieceToMove.moveRight();
         }
-        
     }
 
     updateBoardMatrix(pieceToUpdate) {
-        this.boardMatrix[this.rowEmptyPiece][this.columnEmptyPiece] = pieceToUpdate;
+        let emptyRowIndex = this.emptySpace.rowIndex;
+        let emptyColumnIndex = this.emptySpace.columnIndex;
 
-        // TODO: Continuar amanhã, colocar a posição na matriz dentro de Piece tbm ->[row][column] para facilitar a atualização da matriz principal do jogo
+        let pieceRowIndex = pieceToUpdate.rowIndex;
+        let pieceColumnIndex = pieceToUpdate.columnIndex;
 
-        this.boardMatrix[this.rowEmptyPiece][this.newEmptySpaceColumn] = emptySpace;
-        this.columnEmptyPiece = newEmptySpaceColumn;
+        pieceToUpdate.rowIndex = emptyRowIndex;
+        pieceToUpdate.columnIndex = emptyColumnIndex;
+        this.boardMatrix[emptyRowIndex][emptyColumnIndex] = pieceToUpdate;
+        pieceToUpdate.updateCanvasPosition();
+
+        this.emptySpace.rowIndex = pieceRowIndex;
+        this.emptySpace.columnIndex = pieceColumnIndex;
+        this.boardMatrix[pieceRowIndex][pieceColumnIndex] = this.emptySpace;
+        this.emptySpace.updateCanvasPosition();
     }
+
 } 
 
 const emptyBoard = [

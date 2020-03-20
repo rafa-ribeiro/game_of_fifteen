@@ -14,8 +14,6 @@ export default class Game {
     }
 
     update(deltaTime) {
-
         this.board.update(deltaTime);
-
     }
 }

@@ -1,11 +1,17 @@
 export default class Piece {
 
-    constructor(game, value, position, width, height) {
+    constructor(game, value, width, height, rowIndex, columnIndex) {
         this.game = game;
         this.value = value;
-        this.position = position;
         this.width = width;
         this.height = height;
+
+        // Piece`s position on board
+        this.rowIndex = rowIndex;
+        this.columnIndex = columnIndex;
+
+        this.position = null;
+        this.updateCanvasPosition();
 
         // To move piece
         this.speed = 0;
@@ -13,6 +19,13 @@ export default class Piece {
 
         this.isMovingX = false;
         this.isMovingY = false;
+    }
+
+    updateCanvasPosition() {
+        this.position = {
+            x: 10 + (this.columnIndex * this.width + (10 * this.columnIndex)), 
+            y: 10 + (this.rowIndex * this.height + (10 * this.rowIndex))
+        };
     }
 
     draw(ctx) {
@@ -49,7 +62,7 @@ export default class Piece {
     update(deltaTime) {
 
         if (this.isMovingX) {
-            let emptySpace = this.game.board.getEmptySpace();
+            let emptySpace = this.game.board.emptySpace;
 
             this.position.x = this.position.x + this.speed;
 
@@ -61,12 +74,11 @@ export default class Piece {
             }
 
             if (hasArrived) {
-                 console.log("Chegou");
-                 this.isMovingX = false;
+                this.isMovingX = false;
+                this.speed = 0;
+                this.game.board.updateBoardMatrix(this);
+                console.log(this.game.board.boardMatrix);
             }
-
-            // console.log("EmptySpace:", emptySpace);
-            // console.log("ToMove:", this);
         }
         
     }
