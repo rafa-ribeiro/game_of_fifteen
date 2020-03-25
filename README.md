@@ -31,6 +31,7 @@ Desenvolvimento do jogo Game Of Fifteen para estudo e prática de JavaScript, us
 </code>
 <br/><br/>
 * Buildar o projeto e gerar os arquivos estáticos no diretório docs (docs por conta do GitHub Pages):
+
 <code>
     npm run-script prod
 </code>
