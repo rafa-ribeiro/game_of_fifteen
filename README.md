@@ -29,19 +29,18 @@ Desenvolvimento do jogo Game Of Fifteen para estudo e prática de JavaScript, us
 <code>
     npm start
 </code>
-
+<br/><br/>
 * Buildar o projeto e gerar os arquivos estáticos no diretório docs (docs por conta do GitHub Pages):
-
 <code>
     npm run-script prod
 </code>
-
+<br/><br/>
 
 Pode ser usado também o comando abaixo, que gera os arquivos estátiscos, mas também commita e os empurra para o repositório no github:
-
 <code>
     npm run-script deploy
 </code>
+<br/><br/>
 
 
 
