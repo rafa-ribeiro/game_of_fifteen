@@ -22,8 +22,7 @@ Desenvolvimento do jogo Game Of Fifteen para estudo e prática de JavaScript, us
 <code>
     npm install
 </code>
-
-
+  
 2. Com as dependências devidamente instaladas, o projeto já pode ser colocado em execução com:
 
 * Inicializar o game:
