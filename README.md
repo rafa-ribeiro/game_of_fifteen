@@ -4,6 +4,9 @@
 
 Jogue <a href="https://rafa-ribeiro.github.io/game_of_fifteen/" target="_blank">aqui</a>
 
+**Como jogar?**
+
+O jogo consiste em um tabuleiro 4x4, contendo peças de número de 1 até 15 e somente um espaço vazio que é utilizado para se fazer a movimentação das demais peças. Assim o objetivo do jogo, é ordenar todas as peças de 1 a 15, sendo que o espaço vazio deve se localizar na posição inferior direita (na matriz sendo linha 3 coluna 3).
 
 *Autor: Rafael Ribeiro*
 
