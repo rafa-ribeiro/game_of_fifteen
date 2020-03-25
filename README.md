@@ -1,6 +1,6 @@
 # Game Of Fifteen
 
---- O jogo
+**O jogo**
 
 Jogue <a href="https://rafa-ribeiro.github.io/game_of_fifteen/" target="_blank">aqui</a>
 
