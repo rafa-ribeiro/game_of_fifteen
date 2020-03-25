@@ -15,7 +15,7 @@ export default class Piece {
 
         // To move piece
         this.speed = 0;
-        this.maxSpeed = 6;
+        this.maxSpeed = 10;
 
         this.isMovingX = false;
         this.isMovingY = false;
@@ -114,8 +114,7 @@ export default class Piece {
 
         if (hasArrived) {
             this._stopMoving();
-            this.game.board.updateBoardMatrix(this);
-            console.log(this.game.board.boardMatrix);
+            this.game.board.updateBoard(this);
         }
     }
 }

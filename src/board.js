@@ -10,6 +10,7 @@ export default class Board {
         let pieceHeight = 80;
 
         this.boardMatrix = [];
+        this.moves = 0;
 
         this.rowEmptyPiece = null;
         this.columnEmptyPiece = null;
@@ -132,6 +133,12 @@ export default class Board {
         return pieceToMove;
     }
 
+    updateBoard(pieceToUpdate) {
+        this.updateBoardMatrix(pieceToUpdate);
+        this.moves += 1;
+        this.evaluateGame();
+    }
+
     updateBoardMatrix(pieceToUpdate) {
         let emptyRowIndex = this.emptySpace.rowIndex;
         let emptyColumnIndex = this.emptySpace.columnIndex;
@@ -152,7 +159,43 @@ export default class Board {
         this.isMoving = false;
     }
 
-} 
+    evaluateGame() {
+        let isWinner = isWinnerBoard(this.boardMatrix);
+
+        if (isWinner) {
+            console.log("Venci o jogo");
+            console.log("Jogo ganho com: ", this.moves, " movimentos");
+        } else {
+            console.log("Ainda não");
+        }
+    }
+}
+
+function isWinnerBoard(currentBoard) {
+
+    if (!currentBoard) {
+        return false;
+    }
+
+    if (currentBoard.length !== winnerBoard.length) {
+        return false;
+    }
+
+    let rowsLength = winnerBoard.length;
+    let columnsLength = winnerBoard[0].length;
+
+    for (let rowIdx = 0; rowIdx < rowsLength; rowIdx++) {
+        for (let colIdx = 0; colIdx < columnsLength; colIdx++) {
+            let currentPiece = currentBoard[rowIdx][colIdx];
+            let valueWinnerPiece = winnerBoard[rowIdx][colIdx];
+
+            if (currentPiece.value !== valueWinnerPiece) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
 
 const emptyBoard = [
     [0, 0, 0, 0],
@@ -166,4 +209,11 @@ const templateBoard = [
     [9, 7, 13, 12],
     [15, 14, 6, 11],
     [3, 0, 10, 4]
+];
+
+const winnerBoard = [
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+    [13, 14, 15, 0]
 ];
