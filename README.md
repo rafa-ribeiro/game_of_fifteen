@@ -1,6 +1,5 @@
 # Game Of Fifteen
 
-**O jogo**
 
 Jogue <a href="https://rafa-ribeiro.github.io/game_of_fifteen/" target="_blank">aqui</a>
 
@@ -24,6 +23,7 @@ Desenvolvimento do jogo Game Of Fifteen para estudo e prática de JavaScript, us
     npm install
 </code>
 
+
 2. Com as dependências devidamente instaladas, o projeto já pode ser colocado em execução com:
 
 * Inicializar o game:
@@ -36,6 +36,7 @@ Desenvolvimento do jogo Game Of Fifteen para estudo e prática de JavaScript, us
 <code>
     npm run-script prod
 </code>
+
 
 Pode ser usado também o comando abaixo, que gera os arquivos estátiscos, mas também commita e os empurra para o repositório no github:
 
