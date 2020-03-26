@@ -8,7 +8,7 @@ let ctx = canvas.getContext("2d");
 const GAME_WIDTH = canvas.width;
 const GAME_HEIGHT = canvas.height;
 
-let game = new Game();
+let game = new Game(GAME_WIDTH, GAME_HEIGHT);
 
 
 let lastTime = 0;

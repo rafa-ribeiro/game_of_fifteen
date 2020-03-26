@@ -3,6 +3,7 @@ import Piece from "/src/piece";
 export default class Board {
 
     constructor(game) {
+        this.game = game;
         this.boardSpaces = []
         this.piecesList = [];
 
@@ -163,10 +164,7 @@ export default class Board {
         let isWinner = isWinnerBoard(this.boardMatrix);
 
         if (isWinner) {
-            console.log("Venci o jogo");
-            console.log("Jogo ganho com: ", this.moves, " movimentos");
-        } else {
-            console.log("Ainda não");
+            this.game.win();
         }
     }
 }

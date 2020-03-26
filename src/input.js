@@ -3,6 +3,11 @@ export default class InputHandler {
     constructor(game) {
         document.addEventListener("keydown", event => {
             switch (event.keyCode) {
+                case 32:
+                    // SPACEBAR
+                    game.start();
+                    break;
+
                 case 37:
                     // left arrow
                     game.board.moveLeft(); 
