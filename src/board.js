@@ -26,7 +26,9 @@ export default class Board {
             });
         });
 
-        templateBoard.forEach((row, rowIndex) => {
+        let boardGame = generateBoardGame(4, 4);
+
+        boardGame.forEach((row, rowIndex) => {
 
             let piecesRow = []
 
@@ -193,6 +195,25 @@ function isWinnerBoard(currentBoard) {
         }
     }
     return true;
+}
+
+function generateBoardGame(rows, columns) {
+    let piecesValues = Array.from(Array(rows * columns).keys());
+    let  boardGame = [];
+
+    let min = 0;
+    for (let rowIdx = 0; rowIdx < rows; rowIdx++) {
+        let values = [];
+        for (let colIdx = 0; colIdx < columns; colIdx++) {
+            let max = piecesValues.length;
+            var randomIdx = Math.random() * (+max - +min) + min;
+            let value = piecesValues.splice(randomIdx, 1)[0];
+
+            values.push(value);
+        }
+        boardGame.push(values);
+    }
+    return boardGame;
 }
 
 const emptyBoard = [
