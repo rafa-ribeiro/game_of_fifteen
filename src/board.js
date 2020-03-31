@@ -1,5 +1,13 @@
 import Piece from "/src/piece";
 
+
+const MOVES = {
+    LEFT: 0,
+    UP: 1,
+    DOWN: 2,
+    RIGHT: 3
+};
+
 export default class Board {
 
     constructor(game) {
@@ -26,9 +34,7 @@ export default class Board {
             });
         });
 
-        let boardGame = generateBoardGame(4, 4);
-
-        boardGame.forEach((row, rowIndex) => {
+        solvedBoard.forEach((row, rowIndex) => {
 
             let piecesRow = []
 
@@ -44,6 +50,8 @@ export default class Board {
 
             this.boardMatrix.push(Array.from(piecesRow));
         });
+
+        this.shuffleFromSolvedGame(1500);
     }
 
     draw(ctx) {
@@ -60,11 +68,50 @@ export default class Board {
         this.piecesList.forEach(piece => piece.update(deltaTime));
     }
 
-    shuffleFromSolvedGame() {
-        console.log("Chamei o shuffle");
-        this.moveRight();
-        this.moveRight();
-        this.moveRight();
+    shuffleFromSolvedGame(plays) {
+        let min = 0;
+        let max = MOVES.RIGHT + 1;
+        let amountMoves = 0;
+
+        while (amountMoves < plays) {
+            var move = Math.trunc(Math.random() * (+max - +min) + min);
+
+            if (this._movePieceOn(move)) {
+                amountMoves += 1;
+            }
+        }
+    }
+
+    _movePieceOn(move) {
+        let pieceToMove = this._getPieceToMoveFromEmptySpace(move);
+        if (pieceToMove) {
+            this.updateBoardMatrix(pieceToMove);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    _getPieceToMoveFromEmptySpace(move) {
+        let rowIdxPieceToMove = this.emptySpace.rowIndex;
+        let colIdxPieceToMove = this.emptySpace.columnIndex;
+
+        switch (move) {
+            case MOVES.RIGHT:
+                colIdxPieceToMove = this.emptySpace.columnIndex - 1;
+                break;
+            case MOVES.LEFT:
+                colIdxPieceToMove = this.emptySpace.columnIndex + 1;
+                break;
+            case MOVES.DOWN:
+                rowIdxPieceToMove = this.emptySpace.rowIndex - 1;
+                break;
+            case MOVES.UP:
+                rowIdxPieceToMove = this.emptySpace.rowIndex + 1;
+                break;
+        }
+
+        return this._getPieceToMoveBy(rowIdxPieceToMove, colIdxPieceToMove);
     }
 
     moveLeft() {
