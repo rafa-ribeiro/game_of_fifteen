@@ -13,7 +13,6 @@ export default class Game {
         this.board = null;
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
-
         this.gameState = GAMESTATE.MENU ;
 
         new InputHandler(this);
@@ -39,15 +38,24 @@ export default class Game {
         if (this.gameState === GAMESTATE.MENU) {
             this._drawMenuGame(ctx);
         } else if (this.gameState === GAMESTATE.RUNNING) {
-            this.board.draw(ctx);
+            this._drawRunningGame(ctx);
         } else if (this.gameState === GAMESTATE.FINISHED) {
             this._drawMenuWinnerGame(ctx);
         }
     }
 
+    _drawRunningGame(ctx) {
+        // black = rgba(27, 38, 44, 1)
+        // blue = rgba(15, 76, 129, 1)
+        // orange = rgba(237, 102, 99, 1)
+        // cool orange = rgba(255, 163, 114, 1)
+
+        this.board.draw(ctx);
+    }
+
     _drawMenuGame(ctx) {
         ctx.rect(0, 0, this.gameWidth, this.gameHeight);
-        ctx.fillStyle = "rgba(0, 0, 0, 1)";
+        ctx.fillStyle = "rgba(27, 38, 44, 1)";
         ctx.fill();
 
         ctx.font = "30px Arial";
@@ -62,7 +70,7 @@ export default class Game {
 
     _drawMenuWinnerGame(ctx) {
         ctx.rect(0, 0, this.gameWidth, this.gameHeight);
-        ctx.fillStyle = "rgba(0, 0, 0, 1)";
+        ctx.fillStyle = "rgba(27, 38, 44, 1)";
         ctx.fill();
 
         ctx.font = "60px Arial";

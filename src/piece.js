@@ -28,25 +28,30 @@ export default class Piece {
         };
     }
 
-    draw(ctx) {
-        let isEmpty = this.value === 0;
+    draw(ctx, emptySpace) {
+        let isEmptySpace = emptySpace === 'undefined' ? false : emptySpace
 
-        ctx.fillStyle = "rgba(38, 79, 114)";
-        if (isEmpty) {
-            ctx.fillStyle = "rgba(38, 79, 114, 0.4)";
+        if (isEmptySpace) {
+            ctx.fillStyle = "rgba(255, 163, 114, 1)";
+            ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
+            return;
         }
-        ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
 
-        if (!isEmpty) {
+        let isZero = this.value === 0;
+        if (!isZero) {
+            ctx.fillStyle = "rgba(15, 76, 129, 1)";
+            ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
+
             ctx.font = "40px Arial";
-            ctx.fillStyle = "white";
+            ctx.fillStyle = "rgba(237, 102, 99, 1)";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
 
             let x = this.position.x + (this.width / 2);
             let y = this.position.y + (this.height / 2);
             ctx.fillText(this.value, x, y);
-        }   
+        }
+        
     }
 
     moveLeft() {

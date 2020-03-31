@@ -10,7 +10,6 @@ const GAME_HEIGHT = canvas.height;
 
 let game = new Game(GAME_WIDTH, GAME_HEIGHT);
 
-
 let lastTime = 0;
 
 function gameLoop(timestamp) {

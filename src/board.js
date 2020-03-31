@@ -48,7 +48,7 @@ export default class Board {
 
     draw(ctx) {
         this.boardSpaces.forEach(space => {
-            space.draw(ctx);
+            space.draw(ctx, true);
         });
 
         this.piecesList.forEach(piece => {
@@ -58,6 +58,13 @@ export default class Board {
 
     update(deltaTime) {
         this.piecesList.forEach(piece => piece.update(deltaTime));
+    }
+
+    shuffleFromSolvedGame() {
+        console.log("Chamei o shuffle");
+        this.moveRight();
+        this.moveRight();
+        this.moveRight();
     }
 
     moveLeft() {
@@ -138,8 +145,12 @@ export default class Board {
 
     updateBoard(pieceToUpdate) {
         this.updateBoardMatrix(pieceToUpdate);
-        this.moves += 1;
+        this.updateMoves();
         this.evaluateGame();
+    }
+
+    updateMoves() {
+        this.moves += 1;
     }
 
     updateBoardMatrix(pieceToUpdate) {
@@ -223,11 +234,11 @@ const emptyBoard = [
     [0, 0, 0, 0]
 ];
 
-const templateBoard = [
-    [1, 2, 8, 5],
-    [9, 7, 13, 12],
-    [15, 14, 6, 11],
-    [3, 0, 10, 4]
+const solvedBoard = [
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+    [13, 14, 15, 0]
 ];
 
 const winnerBoard = [
