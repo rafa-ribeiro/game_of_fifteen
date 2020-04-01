@@ -118,8 +118,7 @@ export default class Board {
         if (!this.isMoving) {
             this.isMoving = true;
 
-            let newEmptySpaceColumn = this.emptySpace.columnIndex + 1;
-            let pieceToMove = this._getPieceToMoveBy(this.emptySpace.rowIndex, newEmptySpaceColumn);
+            let pieceToMove = this._getPieceToMoveFromEmptySpace(MOVES.LEFT);
 
             if (pieceToMove) {
                 pieceToMove.moveLeft();
@@ -133,8 +132,7 @@ export default class Board {
         if (!this.isMoving) {
             this.isMoving = true;
 
-            let newEmptySpaceColumn = this.emptySpace.columnIndex - 1;
-            let pieceToMove = this._getPieceToMoveBy(this.emptySpace.rowIndex, newEmptySpaceColumn);
+            let pieceToMove = this._getPieceToMoveFromEmptySpace(MOVES.RIGHT);
 
             if (pieceToMove) {
                 pieceToMove.moveRight();
@@ -148,8 +146,7 @@ export default class Board {
         if (!this.isMoving) {
             this.isMoving = true;
 
-            let rowIdxPieceToMove = this.emptySpace.rowIndex + 1;
-            let pieceToMove = this._getPieceToMoveBy(rowIdxPieceToMove, this.emptySpace.columnIndex);
+            let pieceToMove = this._getPieceToMoveFromEmptySpace(MOVES.UP);
 
             if (pieceToMove) {
                 pieceToMove.moveUp();
@@ -163,8 +160,7 @@ export default class Board {
         if (!this.isMoving) {
             this.isMoving = true;
 
-            let rowIdxPieceToMove = this.emptySpace.rowIndex - 1;
-            let pieceToMove = this._getPieceToMoveBy(rowIdxPieceToMove, this.emptySpace.columnIndex);
+            let pieceToMove = this._getPieceToMoveFromEmptySpace(MOVES.DOWN);
 
             if (pieceToMove) {
                 pieceToMove.moveDown();
@@ -235,17 +231,17 @@ function isWinnerBoard(currentBoard) {
         return false;
     }
 
-    if (currentBoard.length !== winnerBoard.length) {
+    if (currentBoard.length !== solvedBoard.length) {
         return false;
     }
 
-    let rowsLength = winnerBoard.length;
-    let columnsLength = winnerBoard[0].length;
+    let rowsLength = solvedBoard.length;
+    let columnsLength = solvedBoard[0].length;
 
     for (let rowIdx = 0; rowIdx < rowsLength; rowIdx++) {
         for (let colIdx = 0; colIdx < columnsLength; colIdx++) {
             let currentPiece = currentBoard[rowIdx][colIdx];
-            let valueWinnerPiece = winnerBoard[rowIdx][colIdx];
+            let valueWinnerPiece = solvedBoard[rowIdx][colIdx];
 
             if (currentPiece.value !== valueWinnerPiece) {
                 return false;
@@ -282,13 +278,6 @@ const emptyBoard = [
 ];
 
 const solvedBoard = [
-    [1, 2, 3, 4],
-    [5, 6, 7, 8],
-    [9, 10, 11, 12],
-    [13, 14, 15, 0]
-];
-
-const winnerBoard = [
     [1, 2, 3, 4],
     [5, 6, 7, 8],
     [9, 10, 11, 12],
