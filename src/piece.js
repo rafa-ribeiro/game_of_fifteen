@@ -1,3 +1,16 @@
+CanvasRenderingContext2D.prototype.roundRect = function (x, y, width, height, radius) {
+    if (width < 2 * radius) radius = width / 2;
+    if (height < 2 * radius) radius = height / 2;
+    this.beginPath();
+    this.moveTo(x + radius, y);
+    this.arcTo(x + width, y, x + width, y + height, radius);
+    this.arcTo(x + width, y + height, x, y + height, radius);
+    this.arcTo(x, y + height, x, y, radius);
+    this.arcTo(x, y, x + width, y, radius);
+    this.closePath();
+    return this;
+  }
+
 export default class Piece {
 
     constructor(game, value, width, height, rowIndex, columnIndex) {
@@ -32,15 +45,17 @@ export default class Piece {
         let isEmptySpace = emptySpace === 'undefined' ? false : emptySpace
 
         if (isEmptySpace) {
+            ctx.roundRect(this.position.x, this.position.y, this.width, this.height, 12);
             ctx.fillStyle = "rgba(255, 163, 114, 1)";
-            ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
+            ctx.fill();
             return;
         }
 
         let isZero = this.value === 0;
         if (!isZero) {
+            ctx.roundRect(this.position.x, this.position.y, this.width, this.height, 10);
             ctx.fillStyle = "rgba(15, 76, 129, 1)";
-            ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
+            ctx.fill();
 
             ctx.font = "40px Arial";
             ctx.fillStyle = "rgba(237, 102, 99, 1)";
@@ -50,8 +65,7 @@ export default class Piece {
             let x = this.position.x + (this.width / 2);
             let y = this.position.y + (this.height / 2);
             ctx.fillText(this.value, x, y);
-        }
-        
+        }   
     }
 
     moveLeft() {

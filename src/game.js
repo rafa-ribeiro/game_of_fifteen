@@ -13,7 +13,7 @@ export default class Game {
         this.board = null;
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
-        this.gameState = GAMESTATE.MENU ;
+        this.gameState = GAMESTATE.MENU;
 
         new InputHandler(this);
     }
@@ -45,11 +45,6 @@ export default class Game {
     }
 
     _drawRunningGame(ctx) {
-        // black = rgba(27, 38, 44, 1)
-        // blue = rgba(15, 76, 129, 1)
-        // orange = rgba(237, 102, 99, 1)
-        // cool orange = rgba(255, 163, 114, 1)
-
         this.board.draw(ctx);
     }
 
