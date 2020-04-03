@@ -19,7 +19,6 @@ export default class Board {
         let pieceHeight = 80;
 
         this.boardMatrix = [];
-        this.moves = 0;
 
         this.rowEmptyPiece = null;
         this.columnEmptyPiece = null;
@@ -193,7 +192,7 @@ export default class Board {
     }
 
     updateMoves() {
-        this.moves += 1;
+        this.game.increaseMoves();
     }
 
     updateBoardMatrix(pieceToUpdate) {

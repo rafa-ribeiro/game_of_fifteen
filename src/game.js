@@ -14,6 +14,7 @@ export default class Game {
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
         this.gameState = GAMESTATE.MENU;
+        this.moves = 0;
 
         new InputHandler(this);
     }
@@ -25,6 +26,11 @@ export default class Game {
 
         this.gameState = GAMESTATE.RUNNING;
         this.board = new Board(this);
+        this.moves = 0;
+    }
+
+    increaseMoves() {
+        this.moves += 1;
     }
 
     win() {
@@ -80,7 +86,7 @@ export default class Game {
         ctx.font = "16px Arial";
         ctx.fillStyle = "white";
 
-        let movesToWin = this.board !== null ? this.board.moves : 0;
+        let movesToWin = this.moves;
 
         ctx.fillText(
             "Moves .................................... " + movesToWin,

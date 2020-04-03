@@ -1,18 +1,30 @@
-#gameScreen {
-    /* Position on screen */
-    padding: 0;
-    margin: auto;
-    display: block;
+#gameArea {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(0, 0, 55, 1);
-    border: 4px solid gray;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
+#gameHeader {
+    display: block;
+    height: 80px;
+}
 
+#gameScreen {
+    background-color: rgba(0, 0, 55, 1);
+    border: 6px solid rgba(27, 38, 44, 1); 
+} 
+
+#scoreboard {
+    display: block;
+    /* background-color: rgba(27, 38, 44, 1); */
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    /* border: 6px solid rgba(237, 102, 99, 1); */
+}
+
+/* #game */
 /* 
 black = rgba(27, 38, 44, 1)
 blue = rgba(15, 76, 129, 1)
