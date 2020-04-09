@@ -46,7 +46,8 @@ export default class Piece {
 
         if (isEmptySpace) {
             ctx.roundRect(this.position.x, this.position.y, this.width, this.height, 12);
-            ctx.fillStyle = "rgba(255, 163, 114, 1)";
+            // ctx.fillStyle = "rgba(255, 163, 114, 1)";
+            ctx.fillStyle = "#f1f3f4";
             ctx.fill();
             return;
         }
@@ -54,16 +55,16 @@ export default class Piece {
         let isZero = this.value === 0;
         if (!isZero) {
             ctx.roundRect(this.position.x, this.position.y, this.width, this.height, 10);
-            ctx.fillStyle = "rgba(15, 76, 129, 1)";
+            ctx.fillStyle = "#79bac1";
             ctx.fill();
 
-            ctx.font = "40px Arial";
-            ctx.fillStyle = "rgba(237, 102, 99, 1)";
+            ctx.font = "45px monospace";
+            ctx.fillStyle = "#512b58";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
 
             let x = this.position.x + (this.width / 2);
-            let y = this.position.y + (this.height / 2);
+            let y = this.position.y + (this.height * 0.50);
             ctx.fillText(this.value, x, y);
         }   
     }

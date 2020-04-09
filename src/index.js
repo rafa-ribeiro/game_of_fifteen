@@ -32,7 +32,6 @@ function gameLoop(timestamp) {
 
     scoreboardCtx.clearRect(0, 0, SCOREBOARD_WIDTH, SCOREBOARD_HEIGHT);
     scoreboard.draw(scoreboardCtx);
-    scoreboard.update(deltaTime);
 
     requestAnimationFrame(gameLoop);
 }

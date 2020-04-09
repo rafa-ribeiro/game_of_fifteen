@@ -11,17 +11,17 @@
 }
 
 #gameScreen {
-    background-color: rgba(0, 0, 55, 1);
+    background-color: #2a7886;
     border: 6px solid rgba(27, 38, 44, 1); 
 } 
 
 #scoreboard {
     display: block;
-    /* background-color: rgba(27, 38, 44, 1); */
+    background-color: #79bac1;
     position: absolute;
     top: 0%;
     right: 0%;
-    /* border: 6px solid rgba(237, 102, 99, 1); */
+    /* border: 3px solid rgba(27, 38, 44, 1); */
 }
 
 /* #game */

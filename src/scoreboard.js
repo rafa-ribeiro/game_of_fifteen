@@ -7,18 +7,23 @@ export default class Scoreboard {
     }
 
     draw(ctx) {
-        ctx.font = "40px Arial";
-        ctx.fillStyle = "black";
+        ctx.font = "15px monospace";
+        ctx.textAlign = "center";
+        ctx.fillStyle = "#f1f3f4";
+        ctx.fillText(
+            "MOVES",
+            this.width / 2,
+            this.height * 0.25 
+        );
+
+        ctx.font = "40px monospace";
+        ctx.fillStyle = "#512b58";
         ctx.textAlign = "center";
         ctx.fillText(
             this.game.moves,
             this.width / 2,
             this.height / 1.2
         );
-    }
-
-    update(deltaTime) {
-
     }
 
 }
