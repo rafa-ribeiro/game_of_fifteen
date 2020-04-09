@@ -15,8 +15,8 @@ export default class Board {
         this.boardSpaces = []
         this.piecesList = [];
 
-        let pieceWidth = 80;
-        let pieceHeight = 80;
+        let pieceWidth = game.settings.pieceWidth;
+        let pieceHeight = game.settings.pieceHeight;
 
         this.boardMatrix = [];
 

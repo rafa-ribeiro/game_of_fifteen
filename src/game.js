@@ -9,12 +9,13 @@ const GAMESTATE = {
 
 export default class Game {
 
-    constructor(gameWidth, gameHeight) {
+    constructor(settings) {
         this.board = null;
-        this.gameWidth = gameWidth;
-        this.gameHeight = gameHeight;
+        this.gameWidth = settings.gameWidth;
+        this.gameHeight = settings.gameHeight;
         this.gameState = GAMESTATE.MENU;
         this.moves = 0;
+        this.settings = settings;
 
         new InputHandler(this);
     }

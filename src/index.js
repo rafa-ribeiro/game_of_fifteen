@@ -1,5 +1,6 @@
 import Game from "/src/game";
-import Scoreboard from "./scoreboard";
+import Scoreboard from "/src/scoreboard";
+import Settings from "/src/settings";
 
 
 let canvas = document.getElementById("gameScreen");
@@ -14,7 +15,8 @@ const GAME_HEIGHT = canvas.height;
 const SCOREBOARD_WIDTH = scoreboardCanvas.width;
 const SCOREBOARD_HEIGHT = scoreboardCanvas.height;
 
-let game = new Game(GAME_WIDTH, GAME_HEIGHT);
+let settings = new Settings(GAME_WIDTH, GAME_HEIGHT);
+let game = new Game(settings);
 let scoreboard = new Scoreboard(game, SCOREBOARD_WIDTH, SCOREBOARD_HEIGHT);
 
 let lastTime = 0;
