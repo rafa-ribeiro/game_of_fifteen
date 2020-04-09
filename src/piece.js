@@ -16,8 +16,10 @@ export default class Piece {
     constructor(game, value, rowIndex, columnIndex) {
         this.game = game;
         this.value = value;
+
         this.width = game.settings.pieceWidth;
         this.height = game.settings.pieceHeight;
+        this.gapBetweenPieces = game.settings.gapBetweenPieces;
 
         // Piece`s position on board
         this.rowIndex = rowIndex;
@@ -28,7 +30,7 @@ export default class Piece {
 
         // To move piece
         this.speed = 0;
-        this.maxSpeed = 10;
+        this.maxSpeed = game.settings.pieceMaxSpeed;
 
         this.isMovingX = false;
         this.isMovingY = false;
@@ -36,8 +38,8 @@ export default class Piece {
 
     updateCanvasPosition() {
         this.position = {
-            x: 10 + (this.columnIndex * this.width + (10 * this.columnIndex)), 
-            y: 10 + (this.rowIndex * this.height + (10 * this.rowIndex))
+            x: this.gapBetweenPieces + (this.columnIndex * this.width + (this.gapBetweenPieces * this.columnIndex)), 
+            y: this.gapBetweenPieces + (this.rowIndex * this.height + (this.gapBetweenPieces * this.rowIndex))
         };
     }
 
@@ -46,8 +48,7 @@ export default class Piece {
 
         if (isEmptySpace) {
             ctx.roundRect(this.position.x, this.position.y, this.width, this.height, 12);
-            // ctx.fillStyle = "rgba(255, 163, 114, 1)";
-            ctx.fillStyle = "#f1f3f4";
+            ctx.fillStyle = this.game.settings.emptyPieceColor;
             ctx.fill();
             return;
         }
@@ -55,11 +56,11 @@ export default class Piece {
         let isZero = this.value === 0;
         if (!isZero) {
             ctx.roundRect(this.position.x, this.position.y, this.width, this.height, 10);
-            ctx.fillStyle = "#79bac1";
+            ctx.fillStyle = this.game.settings.pieceColor;
             ctx.fill();
 
-            ctx.font = "45px monospace";
-            ctx.fillStyle = "#512b58";
+            ctx.font = this.game.settings.fontPieceType;
+            ctx.fillStyle = this.game.settings.fontPieceColor;
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
 

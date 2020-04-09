@@ -17,7 +17,7 @@ export default class Scoreboard {
         );
 
         ctx.font = "40px monospace";
-        ctx.fillStyle = "#512b58";
+        ctx.fillStyle = "#79bac1";
         ctx.textAlign = "center";
         ctx.fillText(
             this.game.moves,
