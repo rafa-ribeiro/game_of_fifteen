@@ -6,7 +6,7 @@
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",
-    "prod":  "parcel build index.html --out-dir docs --public-url ./",
+    "prod": "parcel build index.html --out-dir docs --public-url ./",
     "deploy": "npm run prod && git add . && git commit -a -m 'Latest build' && git push origin master",
     "test": "jest --watch"
   },
