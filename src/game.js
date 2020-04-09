@@ -57,7 +57,7 @@ export default class Game {
 
     _drawMenuGame(ctx) {
         ctx.rect(0, 0, this.gameWidth, this.gameHeight);
-        ctx.fillStyle = "rgba(27, 38, 44, 1)";
+        ctx.fillStyle = this.settings.menuColor;
         ctx.fill();
 
         ctx.font = "30px Arial";

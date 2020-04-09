@@ -4,6 +4,9 @@ export default class Settings {
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
         
+        // Menu
+        this.menuColor = "#2a7886";
+
         // Pieces settings
         this.pieceWidth = 80;
         this.pieceHeight = 80;
