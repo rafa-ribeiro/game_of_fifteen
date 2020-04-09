@@ -9,7 +9,7 @@ export default class Scoreboard {
     draw(ctx) {
         ctx.font = "15px monospace";
         ctx.textAlign = "center";
-        ctx.fillStyle = "#f1f3f4";
+        ctx.fillStyle = "#79bac1";
         ctx.fillText(
             "MOVES",
             this.width / 2,
@@ -17,7 +17,7 @@ export default class Scoreboard {
         );
 
         ctx.font = "40px monospace";
-        ctx.fillStyle = "#79bac1";
+        ctx.fillStyle = "#f1f3f4";
         ctx.textAlign = "center";
         ctx.fillText(
             this.game.moves,
