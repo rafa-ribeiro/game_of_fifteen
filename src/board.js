@@ -29,7 +29,7 @@ export default class Board {
 
         emptyBoard.forEach((row, rowIndex) => {
             row.forEach((pieceValue, columnIndex) => {
-                this.boardSpaces.push(new Piece(game, pieceValue, pieceWidth, pieceHeight, rowIndex, columnIndex));
+                this.boardSpaces.push(new Piece(game, pieceValue, rowIndex, columnIndex));
             });
         });
 
@@ -38,7 +38,7 @@ export default class Board {
             let piecesRow = []
 
             row.forEach((pieceValue, columnIndex) => {
-                let piece = new Piece(game, pieceValue, pieceWidth, pieceHeight, rowIndex, columnIndex);
+                let piece = new Piece(game, pieceValue, rowIndex, columnIndex);
                 this.piecesList.push(piece);
                 piecesRow.push(piece);
 

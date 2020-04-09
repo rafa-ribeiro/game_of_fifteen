@@ -13,11 +13,11 @@ CanvasRenderingContext2D.prototype.roundRect = function (x, y, width, height, ra
 
 export default class Piece {
 
-    constructor(game, value, width, height, rowIndex, columnIndex) {
+    constructor(game, value, rowIndex, columnIndex) {
         this.game = game;
         this.value = value;
-        this.width = width;
-        this.height = height;
+        this.width = game.settings.pieceWidth;
+        this.height = game.settings.pieceHeight;
 
         // Piece`s position on board
         this.rowIndex = rowIndex;
