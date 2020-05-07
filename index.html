@@ -5,6 +5,8 @@
         <meta charset="UTF-8" />
 
         <link href="style/game.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
+
     </head>
 
     <body>
@@ -15,7 +17,21 @@
             <canvas id="gameScreen" width="370" height="370"></canvas>
         </div>
 
-        <script src="src/index.js"></script>
-    </body>
+        <div id="modalRanking" class="modalContainer">
+            <div class="modalInputRanking">
+                <button class="closeButton">x</button>
 
+                <h3 class="subtitle">Tô no Ranking mãe</h3>
+                <form>
+                    <input type="text" placeholder="Name">
+                    <input type="text" placeholder="E-mail">
+
+                    <input type="button" value="Enter">
+                </form>
+            </div>
+        </div>
+        
+        <script src="src/index.js"></script>
+
+    </body>
 </html>

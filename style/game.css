@@ -22,7 +22,7 @@
     top: 0%;
     right: 0%;
     /* border: 3px solid rgba(27, 38, 44, 1); */
-}
+} 
 
 /* #game */
 /* 
@@ -31,3 +31,62 @@ blue = rgba(15, 76, 129, 1)
 orange = rgba(237, 102, 99, 1)
 cool orange = rgba(255, 163, 114, 1)
 */
+
+.modalContainer {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    display: flex;
+    justify-content: center; /* Com o display flex, centraliza na horizontal */
+    align-items: center; /* Com display flex, centraliza na vertical*/
+    display: none;
+}
+
+.modalContainer.show {
+    display: flex;
+}
+
+.modalInputRanking {
+    background: white;
+    width: 40%;
+    min-width: 300px;
+    padding: 30px;
+    border: 10px solid #2a7886;
+    box-shadow: 0 0 10px;
+    position: relative;
+}
+
+@keyframes modalAnimation{
+    from {
+        opacity: 0;
+        transform: translate3d(0, -60px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.show .modalInputRanking {
+    animation: modalAnimation .3s;
+}
+
+.closeButton {
+     position: absolute;
+     top: -20px;
+     right: -20px;
+     width: 35px;
+     height: 35px;
+     border-radius: 50%;
+     background: #920702;
+     border: 2px solid white;
+     font-family: "PT Mono", monospace;
+     font-size: 1.2em;
+     color: white;
+     cursor: pointer;
+     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.3);
+}

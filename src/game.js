@@ -4,7 +4,8 @@ import InputHandler from "/src/input"
 const GAMESTATE = {
     MENU: 0,
     RUNNING: 1,
-    FINISHED: 2
+    FINISHED: 2,
+    RANKED: 3
 };
 
 export default class Game {
@@ -39,6 +40,24 @@ export default class Game {
             return;
         }
         this.gameState = GAMESTATE.FINISHED;
+        // this.initRankingModal();
+    }
+
+    initRankingModal() {
+        const modalId = "modalRanking";
+        const modalContainer = document.getElementById(modalId);
+        if (modalContainer) {
+            modalContainer.classList.add("show");
+
+            modalContainer.addEventListener('click', (event) => {
+                let closeModal = event.target.id === modalId || event.target.className === 'closeButton';
+
+                if (closeModal) {
+                    modalContainer.classList.remove("show");
+                }
+                // localStorage.NOME_VARIAVEL                
+            });
+        }
     }
 
     draw(ctx) {
