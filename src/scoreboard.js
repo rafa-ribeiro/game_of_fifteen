@@ -15,8 +15,12 @@ export default class Scoreboard {
             this.width / 2,
             this.height * 0.25 
         );
-
-        ctx.font = "40px monospace";
+        
+        if (this.game.moves.toString().length <= 3){
+            ctx.font = "40px monospace";
+        }else{
+            ctx.font = "28px monospace";
+        }
         ctx.fillStyle = "#f1f3f4";
         ctx.textAlign = "center";
         ctx.fillText(
